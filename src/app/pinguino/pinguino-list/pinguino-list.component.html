@@ -1,0 +1,34 @@
+<div class="header"> </div>
+  <img src="pinguino-icon.png" alt="Penguin Icon">
+  <h1>Especies de pingüinos</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th class="h4">#</th>
+            <th class="h4">Nombre</th>
+            <th class="h4">Nombre Cientifico</th>
+            <th class="h4">Alimentacion</th>
+            <th class="h4">Distribucion Mundial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pinguino of pinguinos" (click)="onSelected(pinguino)">
+            <td class="id">{{pinguino.id}}</td>
+            <td>{{pinguino.name}}</td>
+            <td>{{pinguino.scientific_name}}</td>
+            <td>{{pinguino.feeding}}</td>
+            <td>{{pinguino.global_distribution}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>La especie con mayor distribución mundial es: {{ getPinguinoWithMaxDistribution() }}</p>
+    </div>
+    <div class="col-6" *ngIf="selected">
+      <app-pinguino-detail [pinguinoDetail]="selectedPinguino"></app-pinguino-detail>
+    </div>
+  </div>
+</div>
